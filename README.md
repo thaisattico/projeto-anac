@@ -3,12 +3,22 @@
 Projeto de portfólio em análise de dados, com dados públicos da Agência Nacional da Aviação Civil (ANAC), com objetivo de gerar insights sobre cancelamentos, atrasos e ocupação de voos.
 
 ## Stack
-- SQLite Studio
+- SQLite
 - Python
+
+## Ferramentas
+- SQLite Studio
+- VSCode
 
 ## Banco de Dados 
 
-Tabela 1: aeroportos
+### Fonte dos dados
+- [Dados estatísticos do transporte aéreo (ANAC)](https://www.anac.gov.br/acesso-a-informacao/dados-abertos/areas-de-atuacao/voos-e-operacoes-aereas/dados-estatisticos-do-transporte-aereo/48-dados-estatisticos-do-transporte-aereo)
+- [VRA — Voos Regulares Ativos, arquivos mensais de 2024 (SIROS/ANAC)](https://siros.anac.gov.br/siros/registros/diversos/vra/2024/)
+
+### Tabelas e Colunas
+
+#### Tabela 1: aeroportos
 
 Guarda a informação dos aeroportos.
 
@@ -21,25 +31,25 @@ Colunas
 - uf
 - regiao
 
-Tabela 2: empresas
+#### Tabela 2: empresas
 
 Guarda as informações das empresas aéreas.
 
-  Colunas
+Colunas
   - id_empresa
   - nome
   - sigla
   - nacionalidade
  
-Tabela 3: grupo_voo
+#### Tabela 3: grupo_voo
 
 Guarda a descrição do voo (regular, irregular, improdutivo)
 
-  Colunas
+Colunas
   - id_grupo
   - descricao
  
-Tabela 4: meses
+#### Tabela 4: meses
 
 Guarda as informações durante os meses do ano.
 
@@ -48,7 +58,7 @@ Colunas
 - numero_mes
 - nome_mes
 
-Tabela 5: natureza
+#### Tabela 5: natureza
 
 Guarda informação de voo nacional ou internacional.
 
@@ -56,7 +66,7 @@ Colunas:
 - id_natureza
 - descrição
 
-Tabela 6: voos
+#### Tabela 6: voos
 
 Guarda todas as informações sobre um voo.
 
@@ -80,7 +90,7 @@ Colunas:
 - rtk
 - ano
 
-Tabela 7: voos_2024
+#### Tabela 7: voos_2024
 
 Tabela original.
 
@@ -124,7 +134,7 @@ Colunas:
 - HORAS VOADAS
 - BAGAGEM (KG)
 
-Tabela 8: vra_2024
+#### Tabela 8: vra_2024
 
 Guarda informações sobre os voos.
 
