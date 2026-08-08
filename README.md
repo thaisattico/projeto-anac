@@ -1,4 +1,4 @@
-# Projeto ANAC
+# Projeto ANAC **Em andamento**
 
 Projeto de portfólio em análise de dados, com dados públicos da Agência Nacional da Aviação Civil (ANAC), com objetivo de gerar insights sobre cancelamentos, atrasos e ocupação de voos.
 
