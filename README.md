@@ -1,26 +1,47 @@
 # Projeto ANAC
 
-🚧 **Em andamento**
+🚧 Em andamento
+
 Projeto de portfólio em análise de dados, com dados públicos da Agência Nacional da Aviação Civil (ANAC), com objetivo de gerar insights sobre cancelamentos, atrasos e ocupação de voos.
 
 ## Stack
+
 - SQLite
 - Python
+- Git/Github
 
 ## Ferramentas
+
 - SQLite Studio
 - VSCode
+- Github Desktop
 
-## Banco de Dados 
+## Estrutura do repositório
+
+```
+Queries/
+├── criacao_schema.sql            #criação das tabelas dimensão e da tabela fato
+├── povoamento_dimensoes.sql      #população das tabelas dimensão a partir de voos_2024
+├── povoamento_fato_voos.sql      #população da tabela fato voos
+├── nivel_1_fundamentos.sql       #consultas analíticas básicas
+├── nivel_1_cancelamento.sql      #cancelamentos por empresa (absoluto e taxa %)
+├── cancelamento_por_mes.sql      #mês com mais cancelamentos (vra_2024)
+├── aeroportos_origem.sql         #top 10 aeroportos de origem com mais voos
+└── manutencao/
+    ├── correcao_duplicatas.sql   #remoção de duplicatas nas dimensões
+    └── correcao_meses.sql        #limpeza de linhas nulas na tabela meses
+```
+
+## Banco de Dados
 
 ### Fonte dos dados
+
 - [Dados estatísticos do transporte aéreo (ANAC)](https://www.anac.gov.br/acesso-a-informacao/dados-abertos/areas-de-atuacao/voos-e-operacoes-aereas/dados-estatisticos-do-transporte-aereo/48-dados-estatisticos-do-transporte-aereo)
 - [VRA — Voos Regulares Ativos, arquivos mensais de 2024 (SIROS/ANAC)](https://siros.anac.gov.br/siros/registros/diversos/vra/2024/)
 
-### Tabelas e Colunas
+## Tabelas e Colunas
 
-#### Tabela 1: aeroportos
-
+### Tabela 1: aeroportos
 Guarda a informação dos aeroportos.
 
 Colunas
@@ -32,26 +53,23 @@ Colunas
 - uf
 - regiao
 
-#### Tabela 2: empresas
-
+### Tabela 2: empresas
 Guarda as informações das empresas aéreas.
 
 Colunas
-  - id_empresa
-  - nome
-  - sigla
-  - nacionalidade
- 
-#### Tabela 3: grupo_voo
+- id_empresa
+- nome
+- sigla
+- nacionalidade
 
+### Tabela 3: grupo_voo
 Guarda a descrição do voo (regular, irregular, improdutivo)
 
 Colunas
-  - id_grupo
-  - descricao
- 
-#### Tabela 4: meses
+- id_grupo
+- descricao
 
+### Tabela 4: meses
 Guarda as informações durante os meses do ano.
 
 Colunas
@@ -59,16 +77,14 @@ Colunas
 - numero_mes
 - nome_mes
 
-#### Tabela 5: natureza
-
+### Tabela 5: natureza
 Guarda informação de voo nacional ou internacional.
 
 Colunas:
 - id_natureza
-- descrição
+- descricao
 
-#### Tabela 6: voos
-
+### Tabela 6: voos
 Guarda todas as informações sobre um voo.
 
 Colunas:
@@ -91,8 +107,7 @@ Colunas:
 - rtk
 - ano
 
-#### Tabela 7: voos_2024
-
+### Tabela 7: voos_2024
 Tabela original.
 
 Colunas:
@@ -135,8 +150,7 @@ Colunas:
 - HORAS VOADAS
 - BAGAGEM (KG)
 
-#### Tabela 8: vra_2024
-
+### Tabela 8: vra_2024
 Guarda informações sobre os voos.
 
 Colunas:
@@ -163,7 +177,18 @@ Colunas:
 - Codeshare
 - arquivo_origem
 
+## Análises realizadas
 
+**Cancelamentos por empresa** (`nivel_1_cancelamento.sql`)
+Quantidade absoluta de cancelamentos por empresa aérea, e taxa de cancelamento (%) considerando o total de voos de cada empresa, evitando distorções na comparação entre empresas de portes diferentes.
 
-  
-  
+**Cancelamentos por mês** (`cancelamento_por_mes.sql`)
+Identifica qual mês de 2024 teve o maior número de voos cancelados, usando os dados da `vra_2024`.
+
+**Top 10 aeroportos de origem** (`aeroportos_origem.sql`)
+Os 10 aeroportos com maior volume de voos partindo deles.
+
+## Próximos passos
+
+- Análise de taxa de ocupação (load factor = RPK/ASK)
+- Análise de atrasos por empresa e por aeroporto
