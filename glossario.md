@@ -69,3 +69,18 @@ SUBSTR(texto, posição inicial, quantidade de caracter)
 ```sql
 SUBSTR(texto, posição_inicial, quantidade_de_caracteres)
 ```
+---
+
+### UNION ALL + SUBQUERY
+
+#### UNION ALL
+
+**O que faz:** Combina o resultado de dois ou mais SELECTs em uma coluna só, empilhando as linhas. Usado para juntar "Descrição Aeroporto Origem" e "Descrição Aeroporto Destino" em uma única coluna "aeroporto".
+
+---
+
+#### Subquery (consulta dentro de consulta)
+
+**O que faz:** Um SELECT colocado entre parênteses no lugar de uma tabela, no FROM. O resultado dele passa a se comportar como uma tabela temporária, o que permite fazer GROUP BY, WHERE, etc. em cima de um resultado que não existia como tabela de verdade no banco. Sempre precisa de um apelido (AS algum_nome).
+
+*Nota:* Na query `cancelamento_por_aeroporto` foram utilizados os dois juntos para juntar duas colunas da mesma tabela ("Descrição Aeroporto Origem" e "Descrição Aeroporto Destino") em apenas uma coluna, onde foi utilizado como SUBQUERY para permitir o GROUP BY
