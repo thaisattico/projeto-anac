@@ -84,3 +84,12 @@ SUBSTR(texto, posição_inicial, quantidade_de_caracteres)
 **O que faz:** Um SELECT colocado entre parênteses no lugar de uma tabela, no FROM. O resultado dele passa a se comportar como uma tabela temporária, o que permite fazer GROUP BY, WHERE, etc. em cima de um resultado que não existia como tabela de verdade no banco. Sempre precisa de um apelido (AS algum_nome).
 
 *Nota:* Na query `cancelamento_por_aeroporto` foram utilizados os dois juntos para juntar duas colunas da mesma tabela ("Descrição Aeroporto Origem" e "Descrição Aeroporto Destino") em apenas uma coluna, onde foi utilizado como SUBQUERY para permitir o GROUP BY
+
+---
+
+### JOIN entre subqueries
+
+**O que faz:** Funciona igual um JOIN entre tabelas reais, mas no lugar do nome de uma tabela, usa um SELECT inteiro entre parênteses (subquery) com um apelido. 
+O SQL trata o resultado da subquery como se fosse uma tabela normal.
+
+*Nota:* Usado em `comparativo_companhias_rota.sql` para juntar duas subqueries: uma com a taxa de cancelamento por rota + empresa, outra com as rotas que têm concorrência (2+ empresas).
