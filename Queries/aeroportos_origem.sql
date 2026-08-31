@@ -1,5 +1,4 @@
 -- Análise dos 10 aeroportos com mais voos como origem
--- Fonte: voos_2024
 
 SELECT a.nome AS aeroporto_origem,
        COUNT(*) AS voos_origem
