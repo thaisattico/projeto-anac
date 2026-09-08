@@ -57,8 +57,9 @@ Queries/
 
 ### Tabela 1: aeroportos
 Guarda a informação dos aeroportos.
-
-Colunas
+<details>   
+<summary>Ver todas as colunas do dataset aeroportos</summary>
+    
 - id_aeroporto
 - nome
 - sigla
@@ -67,40 +68,56 @@ Colunas
 - uf
 - regiao
 
+</details>
+
 ### Tabela 2: empresas
 Guarda as informações das empresas aéreas.
-
-Colunas
+<details>
+<summary>Ver todas as colunas do dataset empresas</summary>
+    
 - id_empresa
 - nome
 - sigla
 - nacionalidade
 
+</details>
+
 ### Tabela 3: grupo_voo
 Guarda a descrição do voo (regular, irregular, improdutivo)
-
-Colunas
+<details>
+<summary>Ver todas as colunas do dataset grupo_voo</summary>
+    
 - id_grupo
 - descricao
 
+</details>
+
 ### Tabela 4: meses
 Guarda as informações durante os meses do ano.
-
-Colunas
+<details>
+<summary>Ver todas as colunas do dataset meses</summary>
+    
 - id_mes
 - numero_mes
 - nome_mes
 
+</details>
+
 ### Tabela 5: natureza
 Guarda informação de voo nacional ou internacional.
-
-Colunas:
+<details>
+<summary>Ver todas as colunas do dataset natureza</summary>
+    
 - id_natureza
 - descricao
 
+</details>
+
 ### Tabela 6: voos
 Guarda todas as informações sobre um voo.
-
+<details>
+<summary>Ver todas as colunas do dataset voos</summary>
+    
 Colunas:
 - id_voo
 - id_empresa
@@ -121,10 +138,13 @@ Colunas:
 - rtk
 - ano
 
+</details> 
+
 ### Tabela 7: voos_2024
 Tabela original.
-
-Colunas:
+<details>
+<summary>Ver todas as colunas do dataset voos_2024</summary>
+    
 - EMPRESA (SIGLA)
 - EMPRESA (NOME)
 - EMPRESA (NACIONALIDADE)
@@ -164,10 +184,13 @@ Colunas:
 - HORAS VOADAS
 - BAGAGEM (KG)
 
+</details>
+
 ### Tabela 8: vra_2024
 Guarda informações sobre os voos.
-
-Colunas:
+<details>
+<summary>Ver todas as colunas do dataset vra_2024</summary>
+    
 - Sigla ICAO Empresa Aérea
 - Empresa Aérea
 - Número Voo
@@ -190,6 +213,8 @@ Colunas:
 - Situação Chegada
 - Codeshare
 - arquivo_origem
+
+</details>
 
 ---
 
