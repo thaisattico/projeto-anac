@@ -25,22 +25,34 @@ Projeto de portfólio em análise de dados, com dados públicos da Agência Naci
 ## Estrutura do repositório
 
 ```
-Queries/
-├── criacao_schema.sql               #criação das tabelas dimensão e da tabela fato
-├── povoamento_dimensoes.sql         #população das tabelas dimensão a partir de voos_2024
-├── povoamento_fato_voos.sql         #população da tabela fato voos
-├── nivel_1_fundamentos.sql          #total de voos por empresa
-├── nivel_1_cancelamento.sql         #cancelamentos por empresa (absoluto e taxa %)
-├── cancelamento_por_mes.sql         #mês com mais cancelamentos em 2024
-├── cancelamento_por_aeroporto.sql   #top 10 aeroportos com mais cancelamentos
-├── aeroportos_origem.sql            #top 10 aeroportos de origem com mais voos
-├── rotas_atrasos.sql                #top 10 rotas com mais atrasos
-├── pontualidade_por_empresa.sql     #top 10 empresas mais pontuais (partida e chegada)
-├── taxa_ocupacao.sql                #taxa de ocupação (load factor) por empresa
-├── comparativo_companhias_rota.sql  #comparativo de cancelamento entre empresas concorrentes na mesma rota
-└── manutencao/
-    ├── correcao_duplicatas.sql      #remoção de duplicatas nas tabelas dimensão
-    └── correcao_meses.sql           #limpeza de linhas nulas na tabela meses
+projeto-anac/
+├── database/
+│   ├── anac.db
+│   └── criacao_schema.sql
+├── etl/
+│   └── Juncao_vra.py
+├── Queries/
+│   ├── aeroportos_origem.sql
+│   ├── cancelamento_por_aeroporto.sql
+│   ├── cancelamento_por_mes.sql
+│   ├── comparativo_companhias_rota.sql
+│   ├── natureza.sql
+│   ├── nivel_1_cancelamento.sql
+│   ├── nivel_1_fundamentos.sql
+│   ├── pontualidade_por_empresa.sql
+│   ├── povoamento_dimensoes.sql
+│   ├── povoamento_fato_voos.sql
+│   ├── rotas_atrasos.sql
+│   ├── taxa_ocupacao.sql
+│   └── Manutenção/
+├── voos_csv/
+│   └── 2024.csv
+├── vra_csv/
+│   ├── RAW/
+│   └── Processed/
+├── .gitignore
+├── glossario.md
+└── README.md
 ```
 --- 
 
