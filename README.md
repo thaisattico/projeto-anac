@@ -4,11 +4,15 @@
 
 Projeto de portfólio em análise de dados, com dados públicos da Agência Nacional da Aviação Civil (ANAC), com objetivo de gerar insights sobre cancelamentos, atrasos e ocupação de voos.
 
+--- 
+
 ## Stack
 
 - SQLite
 - Python
 - Git/Github
+
+---
 
 ## Ferramentas
 
@@ -16,21 +20,29 @@ Projeto de portfólio em análise de dados, com dados públicos da Agência Naci
 - VSCode
 - Github Desktop
 
+---
+
 ## Estrutura do repositório
 
 ```
 Queries/
-├── criacao_schema.sql            #criação das tabelas dimensão e da tabela fato
-├── povoamento_dimensoes.sql      #população das tabelas dimensão a partir de voos_2024
-├── povoamento_fato_voos.sql      #população da tabela fato voos
-├── nivel_1_fundamentos.sql       #consultas analíticas básicas
-├── nivel_1_cancelamento.sql      #cancelamentos por empresa (absoluto e taxa %)
-├── cancelamento_por_mes.sql      #mês com mais cancelamentos (vra_2024)
-├── aeroportos_origem.sql         #top 10 aeroportos de origem com mais voos
+├── criacao_schema.sql               #criação das tabelas dimensão e da tabela fato
+├── povoamento_dimensoes.sql         #população das tabelas dimensão a partir de voos_2024
+├── povoamento_fato_voos.sql         #população da tabela fato voos
+├── nivel_1_fundamentos.sql          #total de voos por empresa
+├── nivel_1_cancelamento.sql         #cancelamentos por empresa (absoluto e taxa %)
+├── cancelamento_por_mes.sql         #mês com mais cancelamentos em 2024
+├── cancelamento_por_aeroporto.sql   #top 10 aeroportos com mais cancelamentos
+├── aeroportos_origem.sql            #top 10 aeroportos de origem com mais voos
+├── rotas_atrasos.sql                #top 10 rotas com mais atrasos
+├── pontualidade_por_empresa.sql     #top 10 empresas mais pontuais (partida e chegada)
+├── taxa_ocupacao.sql                #taxa de ocupação (load factor) por empresa
+├── comparativo_companhias_rota.sql  #comparativo de cancelamento entre empresas concorrentes na mesma rota
 └── manutencao/
-    ├── correcao_duplicatas.sql   #remoção de duplicatas nas dimensões
-    └── correcao_meses.sql        #limpeza de linhas nulas na tabela meses
+    ├── correcao_duplicatas.sql      #remoção de duplicatas nas tabelas dimensão
+    └── correcao_meses.sql           #limpeza de linhas nulas na tabela meses
 ```
+--- 
 
 ## Banco de Dados
 
@@ -39,12 +51,15 @@ Queries/
 - [Dados estatísticos do transporte aéreo (ANAC)](https://www.anac.gov.br/acesso-a-informacao/dados-abertos/areas-de-atuacao/voos-e-operacoes-aereas/dados-estatisticos-do-transporte-aereo/48-dados-estatisticos-do-transporte-aereo)
 - [VRA — Voos Regulares Ativos, arquivos mensais de 2024 (SIROS/ANAC)](https://siros.anac.gov.br/siros/registros/diversos/vra/2024/)
 
+--- 
+
 ## Tabelas e Colunas
 
 ### Tabela 1: aeroportos
 Guarda a informação dos aeroportos.
-
-Colunas
+<details>   
+<summary>Ver todas as colunas do dataset aeroportos</summary>
+    
 - id_aeroporto
 - nome
 - sigla
@@ -53,40 +68,56 @@ Colunas
 - uf
 - regiao
 
+</details>
+
 ### Tabela 2: empresas
 Guarda as informações das empresas aéreas.
-
-Colunas
+<details>
+<summary>Ver todas as colunas do dataset empresas</summary>
+    
 - id_empresa
 - nome
 - sigla
 - nacionalidade
 
+</details>
+
 ### Tabela 3: grupo_voo
 Guarda a descrição do voo (regular, irregular, improdutivo)
-
-Colunas
+<details>
+<summary>Ver todas as colunas do dataset grupo_voo</summary>
+    
 - id_grupo
 - descricao
 
+</details>
+
 ### Tabela 4: meses
 Guarda as informações durante os meses do ano.
-
-Colunas
+<details>
+<summary>Ver todas as colunas do dataset meses</summary>
+    
 - id_mes
 - numero_mes
 - nome_mes
 
+</details>
+
 ### Tabela 5: natureza
 Guarda informação de voo nacional ou internacional.
-
-Colunas:
+<details>
+<summary>Ver todas as colunas do dataset natureza</summary>
+    
 - id_natureza
 - descricao
 
+</details>
+
 ### Tabela 6: voos
 Guarda todas as informações sobre um voo.
-
+<details>
+<summary>Ver todas as colunas do dataset voos</summary>
+    
 Colunas:
 - id_voo
 - id_empresa
@@ -107,10 +138,13 @@ Colunas:
 - rtk
 - ano
 
+</details> 
+
 ### Tabela 7: voos_2024
 Tabela original.
-
-Colunas:
+<details>
+<summary>Ver todas as colunas do dataset voos_2024</summary>
+    
 - EMPRESA (SIGLA)
 - EMPRESA (NOME)
 - EMPRESA (NACIONALIDADE)
@@ -150,10 +184,13 @@ Colunas:
 - HORAS VOADAS
 - BAGAGEM (KG)
 
+</details>
+
 ### Tabela 8: vra_2024
 Guarda informações sobre os voos.
-
-Colunas:
+<details>
+<summary>Ver todas as colunas do dataset vra_2024</summary>
+    
 - Sigla ICAO Empresa Aérea
 - Empresa Aérea
 - Número Voo
@@ -177,18 +214,35 @@ Colunas:
 - Codeshare
 - arquivo_origem
 
+</details>
+
+---
+
 ## Análises realizadas
 
-**Cancelamentos por empresa** (`nivel_1_cancelamento.sql`)
-Quantidade absoluta de cancelamentos por empresa aérea, e taxa de cancelamento (%) considerando o total de voos de cada empresa, evitando distorções na comparação entre empresas de portes diferentes.
+Total de voos por empresa (nivel_1_fundamentos.sql) 
+- Contagem geral de voos por empresa aérea.
 
-**Cancelamentos por mês** (`cancelamento_por_mes.sql`)
-Identifica qual mês de 2024 teve o maior número de voos cancelados, usando os dados da `vra_2024`.
+Cancelamentos por empresa (nivel_1_cancelamento.sql) 
+- Quantidade absoluta de cancelamentos por empresa aérea, e taxa de cancelamento (%) considerando o total de voos de cada empresa.
 
-**Top 10 aeroportos de origem** (`aeroportos_origem.sql`)
-Os 10 aeroportos com maior volume de voos partindo deles.
+Mês com mais cancelamentos (cancelamento_por_mes.sql) 
+- Identifica qual mês de 2024 teve o maior número de voos cancelados.
 
-## Próximos passos
+Top 10 aeroportos com mais cancelamentos (cancelamento_por_aeroporto.sql) 
+- Considera o aeroporto tanto como origem quanto como destino de voos cancelados.
 
-- Análise de taxa de ocupação (load factor = RPK/ASK)
-- Análise de atrasos por empresa e por aeroporto
+Top 10 aeroportos de origem (aeroportos_origem.sql) 
+- Os 10 aeroportos com maior volume de voos partindo deles.
+
+Top 10 rotas com mais atrasos (rotas_atrasos.sql) 
+- Rotas (origem-destino) com maior número de voos atrasados na partida.
+
+Top 10 empresas mais pontuais (pontualidade_por_empresa.sql) 
+- Taxa de pontualidade considerando partida e chegada simultaneamente, com filtro de volume mínimo de voos para evitar distorção estatística.
+
+Taxa de ocupação por empresa (taxa_ocupacao.sql) 
+- Load factor (RPK/ASK) de cada empresa aérea.
+
+Comparativo de companhias por rota (comparativo_companhias_rota.sql) 
+- Compara a taxa de cancelamento entre empresas que operam a mesma rota (concorrência direta), filtrando rotas com volume relevante de voos.

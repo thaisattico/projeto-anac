@@ -1,3 +1,6 @@
+--Mês com mais cancelamentos de voos em 2024
+--"Partida Prevista" está em formato brasileiro (DD/MM/AAAA HH:MM), por isso o mês é extraído com SUBSTR ao invés de strftime().
+
 SELECT
     SUBSTR("Partida Prevista", 4, 2) AS mes,
     SUM(CASE WHEN "Situação Voo" = 'CANCELADO' THEN 1 ELSE 0 END) AS total_cancelados

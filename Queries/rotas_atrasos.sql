@@ -1,3 +1,7 @@
+--Análise das 10 rotas com mais atrasos
+--Considera qualquer tipo de atraso na partida (LIKE 'Atraso%' pega
+--todas as faixas: "Atraso 30-60", "Atraso 60-120", "Atraso > 240", etc.)
+
 SELECT "Sigla ICAO Aeroporto Origem",
 "Sigla ICAO Aeroporto Destino",
 SUM(CASE WHEN "Situação Partida" LIKE 'Atraso%' 
