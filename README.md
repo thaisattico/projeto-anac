@@ -22,6 +22,15 @@ Projeto de portfólio em análise de dados, com dados públicos da Agência Naci
 
 ---
 
+## Modelagem do banco de dados
+<details>
+  <summary>Visualizar diagrama do banco de dados</summary>
+
+  ![Diagrama do banco de dados](imagens/diagrama.png)
+
+</details>
+
+---
 ## Estrutura do repositório
 
 ```
