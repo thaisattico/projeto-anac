@@ -8,21 +8,24 @@ Projeto de portfólio em análise de dados, com dados públicos da Agência Naci
 
 ## Stack
 
-- SQLite
-- Python
-- Git/Github
+SQLite
+| Python
+| Git/Github
 
 ---
 
 ## Ferramentas
 
-- SQLite Studio
-- VSCode
-- Github Desktop
+SQLite Studio
+| VSCode
+| Github Desktop
 
 ---
 
 ## Modelagem do banco de dados
+
+O banco de dados foi estruturado para organizar os dados dos voos e facilitar as consultas e análises. A modelagem utiliza tabelas dimensionais para armazenar informações sobre empresas aéreas, aeroportos, meses, grupos de voo e natureza da operação, relacionadas à tabela principal de voos por meio de chaves primárias e estrangeiras.
+
 <details>
   <summary>Visualizar diagrama do banco de dados</summary>
 
@@ -71,171 +74,6 @@ projeto-anac/
 
 - [Dados estatísticos do transporte aéreo (ANAC)](https://www.anac.gov.br/acesso-a-informacao/dados-abertos/areas-de-atuacao/voos-e-operacoes-aereas/dados-estatisticos-do-transporte-aereo/48-dados-estatisticos-do-transporte-aereo)
 - [VRA — Voos Regulares Ativos, arquivos mensais de 2024 (SIROS/ANAC)](https://siros.anac.gov.br/siros/registros/diversos/vra/2024/)
-
---- 
-
-## Tabelas e Colunas
-
-### Tabela 1: aeroportos
-Guarda a informação dos aeroportos.
-<details>   
-<summary>Ver todas as colunas do dataset aeroportos</summary>
-    
-- id_aeroporto
-- nome
-- sigla
-- pais
-- continente
-- uf
-- regiao
-
-</details>
-
-### Tabela 2: empresas
-Guarda as informações das empresas aéreas.
-<details>
-<summary>Ver todas as colunas do dataset empresas</summary>
-    
-- id_empresa
-- nome
-- sigla
-- nacionalidade
-
-</details>
-
-### Tabela 3: grupo_voo
-Guarda a descrição do voo (regular, irregular, improdutivo)
-<details>
-<summary>Ver todas as colunas do dataset grupo_voo</summary>
-    
-- id_grupo
-- descricao
-
-</details>
-
-### Tabela 4: meses
-Guarda as informações durante os meses do ano.
-<details>
-<summary>Ver todas as colunas do dataset meses</summary>
-    
-- id_mes
-- numero_mes
-- nome_mes
-
-</details>
-
-### Tabela 5: natureza
-Guarda informação de voo nacional ou internacional.
-<details>
-<summary>Ver todas as colunas do dataset natureza</summary>
-    
-- id_natureza
-- descricao
-
-</details>
-
-### Tabela 6: voos
-Guarda todas as informações sobre um voo.
-<details>
-<summary>Ver todas as colunas do dataset voos</summary>
-    
-Colunas:
-- id_voo
-- id_empresa
-- id_mes
-- id_aeroporto_origem
-- id_aeroporto_destino
-- id_grupo
-- id_natureza
-- passageiros_pagos
-- passageiros_gratis
-- carga_paga_kg
-- carga_gratis_kg
-- correio_kg
-- distancia
-- ask
-- rpk
-- atk
-- rtk
-- ano
-
-</details> 
-
-### Tabela 7: voos_2024
-Tabela original.
-<details>
-<summary>Ver todas as colunas do dataset voos_2024</summary>
-    
-- EMPRESA (SIGLA)
-- EMPRESA (NOME)
-- EMPRESA (NACIONALIDADE)
-- ANO
-- MÊS
-- AEROPORTO DE ORIGEM (SIGLA)
-- AEROPORTO DE ORIGEM (NOME)
-- AEROPORTO DE ORIGEM (UF)
-- AEROPORTO DE ORIGEM (REGIÃO)
-- AEROPORTO DE ORIGEM (PAÍS)
-- AEROPORTO DE ORIGEM (CONTINENTE)
-- AEROPORTO DE DESTINO (SIGLA)
-- AEROPORTO DE DESTINO (NOME)
-- AEROPORTO DE DESTINO (UF)
-- AEROPORTO DE DESTINO (REGIÃO)
-- AEROPORTO DE DESTINO (PAÍS)
-- AEROPORTO DE DESTINO (CONTINENTE)
-- NATUREZA
-- GRUPO DE VOO
-- PASSAGEIROS PAGOS
-- PASSAGEIROS GRÁTIS
-- CARGA PAGA (KG)
-- CARGA GRÁTIS (KG)
-- CORREIO (KG)
-- ASK
-- RPK
-- ATK
-- RTK
-- COMBUSTÍVEL (LITROS)
-- DISTÂNCIA VOADA (KM)
-- DECOLAGENS
-- CARGA PAGA KM
-- CARGA GRÁTIS KM
-- CORREIO KM
-- ASSENTOS
-- PAYLOAD
-- HORAS VOADAS
-- BAGAGEM (KG)
-
-</details>
-
-### Tabela 8: vra_2024
-Guarda informações sobre os voos.
-<details>
-<summary>Ver todas as colunas do dataset vra_2024</summary>
-    
-- Sigla ICAO Empresa Aérea
-- Empresa Aérea
-- Número Voo
-- Código DI
-- Código Tipo Linha
-- Modelo Equipamento
-- Números de Assentos
-- Sigla ICAO Aeroporto Origem
-- Descrição Aeroporto Origem
-- Partida Prevista
-- Partida Real
-- Sigla ICAO Aeroporto Destino
-- Descrição Aeroporto Destino
-- Chegada Prevista
-- Chegada Real
-- Situação Voo
-- Justificativa
-- Referência
-- Situação Partida
-- Situação Chegada
-- Codeshare
-- arquivo_origem
-
-</details>
 
 ---
 
